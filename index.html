@@ -3,199 +3,235 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sumi's Birthday Tribute 🎂✨</title>
+    <title>Happy Birthday Sumi! 🎂✨</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div class="stars"></div>
-    
-    <!-- Header -->
-    <header class="header">
-        <div class="header-content">
-            <h1 class="title">🎂 Happy Birthday Sumi! 🎂</h1>
-            <p class="subtitle">June 14th - A Day to Celebrate YOU ✨</p>
-            <div class="doodles-header">✧･ﾟ: *✧･ﾟ:* ♡ *:･ﾟ✧*:･ﾟ✧</div>
-        </div>
-    </header>
+    <!-- Confetti Background -->
+    <div class="confetti-container"></div>
 
     <!-- Navigation -->
-    <nav class="nav">
-        <button class="nav-btn active" onclick="showSection('photos')">📸 Photos</button>
-        <button class="nav-btn" onclick="showSection('compliments')">💌 Compliments</button>
-        <button class="nav-btn" onclick="showSection('trivia')">🎌 Anime Trivia</button>
-        <button class="nav-btn" onclick="showSection('memory')">🎮 Memory Game</button>
-        <button class="nav-btn" onclick="showSection('wishes')">🎁 Birthday Wishes</button>
+    <nav class="navbar">
+        <div class="nav-content">
+            <h1 class="logo">🎂 Sumi's Birthday Tribute 🎂</h1>
+            <p class="date">June 14 ✨</p>
+        </div>
     </nav>
 
-    <!-- Photos Section -->
-    <section id="photos" class="section active">
-        <div class="section-title">📸 Your Beautiful Moments 📸</div>
-        <div class="doodle">๏̯͡๏</div>
-        <div class="photo-gallery">
-            <div class="photo-item">
-                <div class="photo-placeholder">
-                    <img src="photo1.jpg" alt="Photo 1" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%22200%22 height=%22200%22%3E%3Crect fill=%22%23f5d5b8%22 width=%22200%22 height=%22200%22/%3E%3Ctext x=%2250%25%22 y=%2250%25%22 font-size=%2220%22 text-anchor=%22middle%22 dy=%22.3em%22%3Ephoto1.jpg%3C/text%3E%3C/svg%3E'">
-                </div>
-                <p class="photo-caption">✨ Moment 1</p>
-            </div>
-            <div class="photo-item">
-                <div class="photo-placeholder">
-                    <img src="photo2.jpg" alt="Photo 2" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%22200%22 height=%22200%22%3E%3Crect fill=%22%23f5d5b8%22 width=%22200%22 height=%22200%22/%3E%3Ctext x=%2250%25%22 y=%2250%25%22 font-size=%2220%22 text-anchor=%22middle%22 dy=%22.3em%22%3Ephoto2.jpg%3C/text%3E%3C/svg%3E'">
-                </div>
-                <p class="photo-caption">💫 Moment 2</p>
-            </div>
-            <div class="photo-item">
-                <div class="photo-placeholder">
-                    <img src="photo3.jpg" alt="Photo 3" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%22200%22 height=%22200%22%3E%3Crect fill=%22%23f5d5b8%22 width=%22200%22 height=%22200%22/%3E%3Ctext x=%2250%25%22 y=%2250%25%22 font-size=%2220%22 text-anchor=%22middle%22 dy=%22.3em%22%3Ephoto3.jpg%3C/text%3E%3C/svg%3E'">
-                </div>
-                <p class="photo-caption">🌸 Moment 3</p>
-            </div>
-            <div class="photo-item">
-                <div class="photo-placeholder">
-                    <img src="photo4.jpg" alt="Photo 4" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%22200%22 height=%22200%22%3E%3Crect fill=%22%23f5d5b8%22 width=%22200%22 height=%22200%22/%3E%3Ctext x=%2250%25%22 y=%2250%25%22 font-size=%2220%22 text-anchor=%22middle%22 dy=%22.3em%22%3Ephoto4.jpg%3C/text%3E%3C/svg%3E'">
-                </div>
-                <p class="photo-caption">🎀 Moment 4</p>
-            </div>
-            <div class="photo-item">
-                <div class="photo-placeholder">
-                    <img src="photo5.jpg" alt="Photo 5" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%22200%22 height=%22200%22%3E%3Crect fill=%22%23f5d5b8%22 width=%22200%22 height=%22200%22/%3E%3Ctext x=%2250%25%22 y=%2250%25%22 font-size=%2220%22 text-anchor=%22middle%22 dy=%22.3em%22%3Ephoto5.jpg%3C/text%3E%3C/svg%3E'">
-                </div>
-                <p class="photo-caption">🌺 Moment 5</p>
-            </div>
-            <div class="photo-item">
-                <div class="photo-placeholder">
-                    <img src="photo6.jpg" alt="Photo 6" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%22200%22 height=%22200%22%3E%3Crect fill=%22%23f5d5b8%22 width=%22200%22 height=%22200%22/%3E%3Ctext x=%2250%25%22 y=%2250%25%22 font-size=%2220%22 text-anchor=%22middle%22 dy=%22.3em%22%3Ephoto6.jpg%3C/text%3E%3C/svg%3E'">
-                </div>
-                <p class="photo-caption">💝 Moment 6</p>
-            </div>
-            <div class="photo-item">
-                <div class="photo-placeholder">
-                    <img src="photo7.jpg" alt="Photo 7" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%22200%22 height=%22200%22%3E%3Crect fill=%22%23f5d5b8%22 width=%22200%22 height=%22200%22/%3E%3Ctext x=%2250%25%22 y=%2250%25%22 font-size=%2220%22 text-anchor=%22middle%22 dy=%22.3em%22%3Ephoto7.jpg%3C/text%3E%3C/svg%3E'">
-                </div>
-                <p class="photo-caption">✧ Moment 7</p>
-            </div>
-            <div class="photo-item">
-                <div class="photo-placeholder">
-                    <img src="photo8.jpg" alt="Photo 8" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%22200%22 height=%22200%22%3E%3Crect fill=%22%23f5d5b8%22 width=%22200%22 height=%22200%22/%3E%3Ctext x=%2250%25%22 y=%2250%25%22 font-size=%2220%22 text-anchor=%22middle%22 dy=%22.3em%22%3Ephoto8.jpg%3C/text%3E%3C/svg%3E'">
-                </div>
-                <p class="photo-caption">🎨 Moment 8</p>
-            </div>
-            <div class="photo-item">
-                <div class="photo-placeholder">
-                    <img src="photo9.jpg" alt="Photo 9" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%22200%22 height=%22200%22%3E%3Crect fill=%22%23f5d5b8%22 width=%22200%22 height=%22200%22/%3E%3Ctext x=%2250%25%22 y=%2250%25%22 font-size=%2220%22 text-anchor=%22middle%22 dy=%22.3em%22%3Ephoto9.jpg%3C/text%3E%3C/svg%3E'">
-                </div>
-                <p class="photo-caption">🌙 Moment 9</p>
-            </div>
-            <div class="photo-item">
-                <div class="photo-placeholder">
-                    <img src="photo10.jpg" alt="Photo 10" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%22200%22 height=%22200%22%3E%3Crect fill=%22%23f5d5b8%22 width=%22200%22 height=%22200%22/%3E%3Ctext x=%2250%25%22 y=%2250%25%22 font-size=%2220%22 text-anchor=%22middle%22 dy=%22.3em%22%3Ephoto10.jpg%3C/text%3E%3C/svg%3E'">
-                </div>
-                <p class="photo-caption">✨ Moment 10</p>
-            </div>
-        </div>
-    </section>
+    <!-- Main Container -->
+    <div class="container">
+        <!-- Header Section -->
+        <header class="header-section">
+            <div class="doodle-top">✨ 🎉 🎀 ✨ 🎉 🎀</div>
+            <h1 class="main-title">Happy Birthday Sumi! 🎂💫</h1>
+            <p class="subtitle">June 14 - The Day The World Got Cuter ✨</p>
+            <div class="doodle-bottom">🌸 🎈 💖 🌸 🎈 💖</div>
+        </header>
 
-    <!-- Compliments Section -->
-    <section id="compliments" class="section">
-        <div class="section-title">💌 Sweet Compliments for Sumi 💌</div>
-        <div class="doodle">◡̀_◡́)</div>
-        <div class="compliments-container">
-            <div class="compliment-card">
-                <p class="compliment-text">✨ You have the most beautiful smile that lights up any room!</p>
-                <span class="compliment-emoji">😊</span>
-            </div>
-            <div class="compliment-card">
-                <p class="compliment-text">💫 Your kindness and compassion inspire everyone around you!</p>
-                <span class="compliment-emoji">💖</span>
-            </div>
-            <div class="compliment-card">
-                <p class="compliment-text">🌸 You're incredibly talented and creative in everything you do!</p>
-                <span class="compliment-emoji">🎨</span>
-            </div>
-            <div class="compliment-card">
-                <p class="compliment-text">🎭 Your sense of humor always makes us laugh and feel alive!</p>
-                <span class="compliment-emoji">😄</span>
-            </div>
-            <div class="compliment-card">
-                <p class="compliment-text">🌟 You're an amazing friend who's always there when we need you!</p>
-                <span class="compliment-emoji">👯</span>
-            </div>
-            <div class="compliment-card">
-                <p class="compliment-text">💝 Your presence makes every day feel special and memorable!</p>
-                <span class="compliment-emoji">🎀</span>
-            </div>
-            <div class="compliment-card">
-                <p class="compliment-text">✧ You have a heart of gold that cares for everyone!</p>
-                <span class="compliment-emoji">💛</span>
-            </div>
-            <div class="compliment-card">
-                <p class="compliment-text">🌺 Your inner and outer beauty is absolutely breathtaking!</p>
-                <span class="compliment-emoji">🌹</span>
-            </div>
-        </div>
-    </section>
-
-    <!-- Anime Trivia Section -->
-    <section id="trivia" class="section">
-        <div class="section-title">🎌 Anime Trivia Challenge 🎌</div>
-        <div class="doodle">٩(◕‿◕｡)۶</div>
-        <div class="trivia-container">
-            <div class="trivia-card" id="triviaCard">
-                <p class="trivia-question" id="triviaQuestion">Question loading...</p>
-                <div class="trivia-options">
-                    <button class="trivia-btn" onclick="checkAnswer(0)"></button>
-                    <button class="trivia-btn" onclick="checkAnswer(1)"></button>
-                    <button class="trivia-btn" onclick="checkAnswer(2)"></button>
-                    <button class="trivia-btn" onclick="checkAnswer(3)"></button>
+        <!-- Photo Slideshow Section -->
+        <section class="slideshow-section">
+            <h2 class="section-title">📸 Your Magical Moments 📸</h2>
+            <div class="slideshow-container">
+                <div class="slide fade">
+                    <img src="photo1.jpg" alt="Photo 1">
+                    <div class="slide-caption">✨ Your smile could light up the darkest anime convention! 😊</div>
                 </div>
-                <p class="trivia-result" id="triviaResult"></p>
-            </div>
-            <button class="next-btn" onclick="nextTrivia()">Next Question →</button>
-            <p class="trivia-score">Score: <span id="triviaScore">0</span>/5</p>
-        </div>
-    </section>
+                <div class="slide fade">
+                    <img src="photo2.jpg" alt="Photo 2">
+                    <div class="slide-caption">💖 Sweet like Rem from Re:Zero, but even cuter! 💕</div>
+                </div>
+                <div class="slide fade">
+                    <img src="photo3.jpg" alt="Photo 3">
+                    <div class="slide-caption">🌟 Your laugh is the best manga panel ever! 😄</div>
+                </div>
+                <div class="slide fade">
+                    <img src="photo4.jpg" alt="Photo 4">
+                    <div class="slide-caption">🎀 Elegant like Akira Yamagata, kind like always! 💗</div>
+                </div>
+                <div class="slide fade">
+                    <img src="photo5.jpg" alt="Photo 5">
+                    <div class="slide-caption">✨ You're the protagonist of everyone's heart! 💫</div>
+                </div>
+                <div class="slide fade">
+                    <img src="photo6.jpg" alt="Photo 6">
+                    <div class="slide-caption">🌸 Graceful as a cherry blossom, warm as sunshine! 🌸</div>
+                </div>
+                <div class="slide fade">
+                    <img src="photo7.jpg" alt="Photo 7">
+                    <div class="slide-caption">💫 Your energy is as vibrant as Studio Ghibli's art! 🎨</div>
+                </div>
+                <div class="slide fade">
+                    <img src="photo8.jpg" alt="Photo 8">
+                    <div class="slide-caption">🎀 Stunning and real - better than any anime character! 👸</div>
+                </div>
+                <div class="slide fade">
+                    <img src="photo9.jpg" alt="Photo 9">
+                    <div class="slide-caption">💖 You make ordinary moments feel like a beautiful anime scene! 📺✨</div>
+                </div>
+                <div class="slide fade">
+                    <img src="photo10.jpg" alt="Photo 10">
+                    <div class="slide-caption">🌟 The cutest friend anyone could ever ask for! 💝</div>
+                </div>
 
-    <!-- Memory Game Section -->
-    <section id="memory" class="section">
-        <div class="section-title">🎮 Memory Card Game 🎮</div>
-        <div class="doodle">(๑•́ ω •̀)و</div>
-        <div class="memory-container">
-            <p class="memory-desc">Match the pairs! Click cards to flip them 🎯</p>
+                <!-- Navigation Arrows -->
+                <a class="prev" onclick="changeSlide(-1)">❮</a>
+                <a class="next" onclick="changeSlide(1)">❯</a>
+            </div>
+
+            <!-- Slide Indicators -->
+            <div class="dots-container">
+                <span class="dot" onclick="currentSlide(1)"></span>
+                <span class="dot" onclick="currentSlide(2)"></span>
+                <span class="dot" onclick="currentSlide(3)"></span>
+                <span class="dot" onclick="currentSlide(4)"></span>
+                <span class="dot" onclick="currentSlide(5)"></span>
+                <span class="dot" onclick="currentSlide(6)"></span>
+                <span class="dot" onclick="currentSlide(7)"></span>
+                <span class="dot" onclick="currentSlide(8)"></span>
+                <span class="dot" onclick="currentSlide(9)"></span>
+                <span class="dot" onclick="currentSlide(10)"></span>
+            </div>
+        </section>
+
+        <!-- Birthday Letter Section -->
+        <section class="letter-section">
+            <h2 class="section-title">💌 A Letter Just For You 💌</h2>
+            <div class="letter-box">
+                <div class="letter-header">Dear Sumi,</div>
+                <div class="letter-content">
+                    <p>Today is your special day, and I just had to tell you how amazing you are! 🎂✨</p>
+                    
+                    <p>You know, I've always thought of you as the main character of our friendship story. Like every great anime protagonist, you have something special that makes you unique - that warmth, that kindness, and that infectious cuteness that just makes everyone around you smile. 😊💕</p>
+                    
+                    <p>Your personality is like a perfectly written character arc - you're confident, genuine, and absolutely hilarious! Every moment with you feels like a scene from the best slice-of-life anime. Whether we're laughing at the stupidest jokes or having deep conversations about life, time with you is always precious. 💫</p>
+                    
+                    <p>What makes you so special is that you're real. You're not trying to be anyone else - you're just authentically, beautifully YOU. And that's what makes you so damn cute! Your laugh, your expressions, the way you care about people around you... everything about you is just perfect in the most genuine way possible. 🌸💖</p>
+                    
+                    <p>I'm so grateful to have a friend like you. You make life more colorful, more fun, and infinitely more wonderful. On this day, I want you to know that you deserve all the happiness in the world. You deserve cake, laughter, adventure, and endless moments of joy! 🎉🎈</p>
+                    
+                    <p>Thank you for being the cutest, kindest, and most wonderful friend. Thank you for all the memories we've shared and all the ones we'll create together. Here's to you, Sumi - the girl who deserves the world and then some! 🌟</p>
+                    
+                    <p>Happy Birthday! 🎂✨💝</p>
+                    
+                    <p class="letter-signature">Your Amazing Friend</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Anime Trivia Section -->
+        <section class="trivia-section">
+            <h2 class="section-title">🎮 Anime Trivia Challenge 🎮</h2>
+            <p class="trivia-subtitle">Answer these anime questions to unlock special messages for Sumi! 🌟</p>
+            
+            <div class="quiz-container">
+                <div class="quiz-question" id="quiz-1">
+                    <h3>❓ Question 1: What is the name of the protagonist in "Attack on Titan"?</h3>
+                    <div class="quiz-options">
+                        <button class="quiz-btn" onclick="checkAnswer('quiz-1', false)">Levi Ackerman</button>
+                        <button class="quiz-btn" onclick="checkAnswer('quiz-1', true)">Eren Yeager</button>
+                        <button class="quiz-btn" onclick="checkAnswer('quiz-1', false)">Mikasa Ackerman</button>
+                        <button class="quiz-btn" onclick="checkAnswer('quiz-1', false)">Arwin Smith</button>
+                    </div>
+                    <div class="quiz-result"></div>
+                </div>
+
+                <div class="quiz-question" id="quiz-2">
+                    <h3>❓ Question 2: In "My Hero Academia", what is Deku's real name?</h3>
+                    <div class="quiz-options">
+                        <button class="quiz-btn" onclick="checkAnswer('quiz-2', true)">Izuku Midoriya</button>
+                        <button class="quiz-btn" onclick="checkAnswer('quiz-2', false)">Bakugo Katsuki</button>
+                        <button class="quiz-btn" onclick="checkAnswer('quiz-2', false)">All Might</button>
+                        <button class="quiz-btn" onclick="checkAnswer('quiz-2', false)">Todoroki Shoto</button>
+                    </div>
+                    <div class="quiz-result"></div>
+                </div>
+
+                <div class="quiz-question" id="quiz-3">
+                    <h3>❓ Question 3: What is the main character's name in "Demon Slayer"?</h3>
+                    <div class="quiz-options">
+                        <button class="quiz-btn" onclick="checkAnswer('quiz-3', false)">Giyu Tomioka</button>
+                        <button class="quiz-btn" onclick="checkAnswer('quiz-3', true)">Tanjiro Kamado</button>
+                        <button class="quiz-btn" onclick="checkAnswer('quiz-3', false)">Nezuko Kamado</button>
+                        <button class="quiz-btn" onclick="checkAnswer('quiz-3', false)">Zenitsu Agatsuma</button>
+                    </div>
+                    <div class="quiz-result"></div>
+                </div>
+
+                <div class="quiz-question" id="quiz-4">
+                    <h3>❓ Question 4: In "Death Note", what is Light Yagami's goal?</h3>
+                    <div class="quiz-options">
+                        <button class="quiz-btn" onclick="checkAnswer('quiz-4', true)">To create a perfect world by eliminating criminals</button>
+                        <button class="quiz-btn" onclick="checkAnswer('quiz-4', false)">To become a detective</button>
+                        <button class="quiz-btn" onclick="checkAnswer('quiz-4', false)">To protect humanity from aliens</button>
+                        <button class="quiz-btn" onclick="checkAnswer('quiz-4', false)">To find love</button>
+                    </div>
+                    <div class="quiz-result"></div>
+                </div>
+
+                <div class="quiz-question" id="quiz-5">
+                    <h3>❓ Question 5: What is Sumi like? (Bonus Birthday Question!) 🎂</h3>
+                    <div class="quiz-options">
+                        <button class="quiz-btn" onclick="checkAnswer('quiz-5', true)">Absolutely adorable and the cutest! 💕</button>
+                        <button class="quiz-btn" onclick="checkAnswer('quiz-5', false)">Not that cool</button>
+                        <button class="quiz-btn" onclick="checkAnswer('quiz-5', false)">Just average</button>
+                        <button class="quiz-btn" onclick="checkAnswer('quiz-5', false)">Kind of annoying</button>
+                    </div>
+                    <div class="quiz-result"></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Memory Game Section -->
+        <section class="memory-game-section">
+            <h2 class="section-title">🎮 Memory Card Game 🎮</h2>
+            <p class="game-subtitle">Match the pairs to celebrate Sumi's birthday! 🎉</p>
+            <div class="game-stats">
+                <p>Moves: <span id="moves">0</span></p>
+                <button class="reset-btn" onclick="resetMemoryGame()">Reset Game</button>
+            </div>
             <div class="memory-grid" id="memoryGrid"></div>
-            <button class="reset-btn" onclick="resetMemory()">🔄 Reset Game</button>
-            <p class="memory-status" id="memoryStatus">Matches: 0/8</p>
-        </div>
-    </section>
+            <p class="game-message" id="gameMessage"></p>
+        </section>
 
-    <!-- Wishes Section -->
-    <section id="wishes" class="section">
-        <div class="section-title">🎁 Birthday Wishes & Blessings 🎁</div>
-        <div class="doodle">✧･ﾟ: *✧･ﾟ:* ♡ *:･ﾟ✧*:･ﾟ✧</div>
-        <div class="wishes-container">
-            <div class="wish-box">
-                <p>On your special day, I wish for you...</p>
-                <ul class="wishes-list">
-                    <li>🌟 Endless happiness and beautiful moments</li>
-                    <li>💫 Success in everything you pursue</li>
-                    <li>💖 Love and warmth from everyone around you</li>
-                    <li>🎨 Creativity and inspiration to achieve your dreams</li>
-                    <li>🌸 Health, strength, and a heart full of joy</li>
-                    <li>✨ Lots of laughter and unforgettable memories</li>
-                </ul>
+        <!-- Wishes Section -->
+        <section class="wishes-section">
+            <h2 class="section-title">🌟 Birthday Wishes for Sumi 🌟</h2>
+            <div class="wishes-grid">
+                <div class="wish-card">
+                    <div class="wish-emoji">🎂</div>
+                    <p>May your day be as sweet as cake and as colorful as a rainbow! 🌈</p>
+                </div>
+                <div class="wish-card">
+                    <div class="wish-emoji">💫</div>
+                    <p>You shine brighter than all the stars in the anime sky! ⭐</p>
+                </div>
+                <div class="wish-card">
+                    <div class="wish-emoji">💖</div>
+                    <p>May your heart be filled with endless joy and laughter! 😄</p>
+                </div>
+                <div class="wish-card">
+                    <div class="wish-emoji">🌸</div>
+                    <p>Bloom into another year of being absolutely adorable! 🌺</p>
+                </div>
+                <div class="wish-card">
+                    <div class="wish-emoji">🎊</div>
+                    <p>Every day is better when you're in it! 🎉</p>
+                </div>
+                <div class="wish-card">
+                    <div class="wish-emoji">👑</div>
+                    <p>You deserve to be treated like the princess you are! 👸</p>
+                </div>
             </div>
-            <div class="cake-animation">
-                <div class="candle"></div>
-                <p class="make-wish">🎂 Make a wish! 🎂</p>
-            </div>
-        </div>
-    </section>
+        </section>
 
-    <!-- Footer -->
-    <footer class="footer">
-        <p>Made with 💖 for Sumi's Birthday</p>
-        <p>June 14th - Your Special Day! 🎉✨</p>
-        <div class="footer-doodles">✧･ﾟ: *✧･ﾟ:* ♡ *:･ﾟ✧*:･ﾟ✧</div>
-    </footer>
+        <!-- Footer Section -->
+        <footer class="footer-section">
+            <div class="doodle-footer">✨ 🎂 💖 ✨ 🎂 💖</div>
+            <p class="footer-text">Made with tons of love for the cutest friend ever! 💝</p>
+            <p class="footer-date">Happy Birthday, Sumi! - June 14, 2024 🎉</p>
+            <div class="doodle-footer">🎀 🌟 💫 🎀 🌟 💫</div>
+        </footer>
+    </div>
 
     <script src="script.js"></script>
 </body>

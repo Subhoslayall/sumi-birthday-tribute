@@ -1,224 +1,168 @@
-// Trivia Questions (Anime Themed)
-const triviaQuestions = [
-    {
-        question: "Which anime features the character Naruto Uzumaki?",
-        options: ["Naruto", "One Piece", "Bleach", "Attack on Titan"],
-        correct: 0
-    },
-    {
-        question: "What is the name of the most famous anime sword?",
-        options: ["Zangetsu", "Muichiro's Sword", "Demon Slayer Blade", "All of the above"],
-        correct: 3
-    },
-    {
-        question: "In 'Death Note', what is Light Yagami's goal?",
-        options: ["To become a teacher", "To rid the world of evil", "To become rich", "To travel the world"],
-        correct: 1
-    },
-    {
-        question: "Which anime is known for its opening 'A Cruel Angel's Thesis'?",
-        options: ["Neon Genesis Evangelion", "Serial Experiments Lain", "Cowboy Bebop", "The Melancholy of Haruhi Suzumiya"],
-        correct: 0
-    },
-    {
-        question: "What year was the first anime 'Astro Boy' created?",
-        options: ["1950", "1960", "1963", "1970"],
-        correct: 2
-    }
-];
+// Slideshow functionality
+let slideIndex = 1;
+showSlide(slideIndex);
+autoSlide();
 
-// Memory Game Emojis
-const memoryEmojis = ['🎀', '🌸', '💫', '🎨', '✨', '💖', '🎭', '🌺'];
-
-let currentTriviaIndex = 0;
-let triviaScore = 0;
-let triviaAnswered = false;
-let memoryCards = [];
-let flippedCards = [];
-let matchedPairs = 0;
-
-// Show Section Function
-function showSection(sectionId) {
-    // Hide all sections
-    const sections = document.querySelectorAll('.section');
-    sections.forEach(section => section.classList.remove('active'));
-
-    // Show selected section
-    document.getElementById(sectionId).classList.add('active');
-
-    // Update nav buttons
-    const navButtons = document.querySelectorAll('.nav-btn');
-    navButtons.forEach(btn => btn.classList.remove('active'));
-    event.target.classList.add('active');
-
-    // Initialize games if needed
-    if (sectionId === 'trivia' && triviaCards.length === 0) {
-        initTrivia();
-    }
-    if (sectionId === 'memory' && memoryCards.length === 0) {
-        initMemory();
-    }
+function changeSlide(n) {
+    showSlide(slideIndex += n);
 }
 
-// Trivia Functions
-let triviaCards = [];
-
-function initTrivia() {
-    triviaCards = [...triviaQuestions];
-    currentTriviaIndex = 0;
-    triviaScore = 0;
-    triviaAnswered = false;
-    loadTrivia();
+function currentSlide(n) {
+    showSlide(slideIndex = n);
 }
 
-function loadTrivia() {
-    if (currentTriviaIndex >= triviaQuestions.length) {
-        document.getElementById('triviaQuestion').textContent = `Quiz Complete! Final Score: ${triviaScore}/5 🎉`;
-        document.querySelector('.trivia-options').style.display = 'none';
-        document.querySelector('.next-btn').textContent = 'Take Quiz Again ↻';
-        document.querySelector('.next-btn').onclick = () => {
-            currentTriviaIndex = 0;
-            triviaScore = 0;
-            triviaAnswered = false;
-            document.querySelector('.trivia-options').style.display = 'grid';
-            document.querySelector('.next-btn').textContent = 'Next Question →';
-            document.querySelector('.next-btn').onclick = nextTrivia;
-            loadTrivia();
-        };
-        return;
+function showSlide(n) {
+    let slides = document.getElementsByClassName('slide');
+    let dots = document.getElementsByClassName('dot');
+    
+    if (n > slides.length) {
+        slideIndex = 1;
     }
-
-    const question = triviaQuestions[currentTriviaIndex];
-    document.getElementById('triviaQuestion').textContent = question.question;
-    document.getElementById('triviaResult').textContent = '';
-    document.getElementById('triviaResult').className = 'trivia-result';
-
-    const buttons = document.querySelectorAll('.trivia-btn');
-    buttons.forEach((btn, index) => {
-        btn.textContent = question.options[index];
-        btn.style.pointerEvents = 'auto';
-        btn.style.opacity = '1';
-    });
-
-    triviaAnswered = false;
-    updateTriviaScore();
+    if (n < 1) {
+        slideIndex = slides.length;
+    }
+    
+    for (let i = 0; i < slides.length; i++) {
+        slides[i].style.display = 'none';
+    }
+    for (let i = 0; i < dots.length; i++) {
+        dots[i].className = dots[i].className.replace(' active', '');
+    }
+    
+    slides[slideIndex - 1].style.display = 'block';
+    dots[slideIndex - 1].className += ' active';
 }
 
-function checkAnswer(index) {
-    if (triviaAnswered) return;
+function autoSlide() {
+    let slides = document.getElementsByClassName('slide');
+    slideIndex++;
+    
+    if (slideIndex > slides.length) {
+        slideIndex = 1;
+    }
+    
+    showSlide(slideIndex);
+    setTimeout(autoSlide, 5000); // Change slide every 5 seconds
+}
 
-    const question = triviaQuestions[currentTriviaIndex];
-    const resultElement = document.getElementById('triviaResult');
-    const buttons = document.querySelectorAll('.trivia-btn');
-
-    triviaAnswered = true;
-
-    if (index === question.correct) {
-        resultElement.textContent = '✨ Correct! Amazing! ✨';
-        resultElement.className = 'trivia-result correct';
-        triviaScore++;
-        buttons[index].style.background = '#27ae60';
+// Quiz functionality
+function checkAnswer(quizId, isCorrect) {
+    const resultDiv = document.querySelector(`#${quizId} .quiz-result`);
+    const buttons = document.querySelectorAll(`#${quizId} .quiz-btn`);
+    
+    // Disable all buttons
+    buttons.forEach(btn => btn.disabled = true);
+    
+    if (isCorrect) {
+        resultDiv.innerHTML = '✅ Correct! Amazing! 🎉';
+        resultDiv.style.color = '#32CD32';
+        resultDiv.style.fontSize = '18px';
     } else {
-        resultElement.textContent = `❌ Oops! The correct answer was: ${question.options[question.correct]}`;
-        resultElement.className = 'trivia-result incorrect';
-        buttons[question.correct].style.background = '#27ae60';
-        buttons[index].style.background = '#e74c3c';
+        resultDiv.innerHTML = '❌ Oops! Try again! 🎮';
+        resultDiv.style.color = '#ff6b6b';
+        resultDiv.style.fontSize = '18px';
     }
-
-    buttons.forEach(btn => btn.style.pointerEvents = 'none');
-    updateTriviaScore();
 }
 
-function nextTrivia() {
-    currentTriviaIndex++;
-    loadTrivia();
-}
+// Memory Game
+const memoryEmojis = ['🎂', '🎉', '💖', '🌸', '🎀', '✨', '🎂', '🎉', '💖', '🌸', '🎀', '✨', '🌟', '💫', '🎈', '🎊'];
+let memoryCards = [];
+let flipped = [];
+let matched = [];
+let moveCount = 0;
 
-function updateTriviaScore() {
-    document.getElementById('triviaScore').textContent = triviaScore;
-}
-
-// Memory Game Functions
-function initMemory() {
+function initMemoryGame() {
     const grid = document.getElementById('memoryGrid');
     grid.innerHTML = '';
-    memoryCards = [];
-    flippedCards = [];
-    matchedPairs = 0;
-
-    const pairs = [...memoryEmojis, ...memoryEmojis];
-    pairs.sort(() => Math.random() - 0.5);
-
-    pairs.forEach((emoji, index) => {
+    
+    // Shuffle emojis
+    memoryCards = memoryEmojis.sort(() => Math.random() - 0.5);
+    flipped = [];
+    matched = [];
+    moveCount = 0;
+    document.getElementById('moves').textContent = moveCount;
+    document.getElementById('gameMessage').innerHTML = '';
+    
+    // Create cards
+    memoryCards.forEach((emoji, index) => {
         const card = document.createElement('div');
         card.className = 'memory-card';
-        card.textContent = '?';
-        card.setAttribute('data-emoji', emoji);
-        card.setAttribute('data-index', index);
-        card.onclick = () => flipCard(card);
+        card.innerHTML = '?';
+        card.dataset.index = index;
+        card.dataset.emoji = emoji;
+        card.addEventListener('click', () => flipMemoryCard(card));
         grid.appendChild(card);
-        memoryCards.push(card);
     });
 }
 
-function flipCard(card) {
-    if (card.classList.contains('flipped') || card.classList.contains('matched')) {
+function flipMemoryCard(card) {
+    if (card.classList.contains('flipped') || card.classList.contains('matched') || flipped.length >= 2) {
         return;
     }
-
-    if (flippedCards.length >= 2) {
-        return;
-    }
-
+    
     card.classList.add('flipped');
-    const emoji = card.getAttribute('data-emoji');
-    card.textContent = emoji;
-    flippedCards.push(card);
-
-    if (flippedCards.length === 2) {
-        checkMatch();
-    }
-}
-
-function checkMatch() {
-    const card1 = flippedCards[0];
-    const card2 = flippedCards[1];
-
-    const match = card1.getAttribute('data-emoji') === card2.getAttribute('data-emoji');
-
-    if (match) {
-        card1.classList.add('matched');
-        card2.classList.add('matched');
-        matchedPairs++;
-        updateMemoryStatus();
-
-        if (matchedPairs === memoryEmojis.length) {
+    card.innerHTML = card.dataset.emoji;
+    flipped.push(card);
+    
+    if (flipped.length === 2) {
+        moveCount++;
+        document.getElementById('moves').textContent = moveCount;
+        
+        if (flipped[0].dataset.emoji === flipped[1].dataset.emoji) {
+            // Match found
+            flipped[0].classList.add('matched');
+            flipped[1].classList.add('matched');
+            matched.push(flipped[0], flipped[1]);
+            flipped = [];
+            
+            if (matched.length === memoryCards.length) {
+                setTimeout(() => {
+                    document.getElementById('gameMessage').innerHTML = '🎉 Congratulations Sumi! You won! 🎉';
+                    document.getElementById('gameMessage').style.color = '#32CD32';
+                }, 300);
+            }
+        } else {
+            // No match
             setTimeout(() => {
-                document.getElementById('memoryStatus').textContent = '🎉 You Won! All Pairs Matched! 🎉';
-            }, 500);
+                flipped[0].classList.remove('flipped');
+                flipped[0].innerHTML = '?';
+                flipped[1].classList.remove('flipped');
+                flipped[1].innerHTML = '?';
+                flipped = [];
+            }, 800);
         }
-    } else {
-        setTimeout(() => {
-            card1.classList.remove('flipped');
-            card2.classList.remove('flipped');
-            card1.textContent = '?';
-            card2.textContent = '?';
-        }, 1000);
     }
-
-    flippedCards = [];
 }
 
-function updateMemoryStatus() {
-    document.getElementById('memoryStatus').textContent = `Matches: ${matchedPairs}/${memoryEmojis.length}`;
+function resetMemoryGame() {
+    initMemoryGame();
 }
 
-function resetMemory() {
-    initMemory();
-    document.getElementById('memoryStatus').textContent = 'Matches: 0/8';
-}
-
-// Initialize trivia on page load
+// Initialize memory game on page load
 window.addEventListener('load', () => {
-    initTrivia();
+    initMemoryGame();
+    createConfetti();
+});
+
+// Confetti animation
+function createConfetti() {
+    const container = document.querySelector('.confetti-container');
+    const confettiPieces = 50;
+    
+    for (let i = 0; i < confettiPieces; i++) {
+        const confetti = document.createElement('div');
+        confetti.className = 'confetti';
+        confetti.style.left = Math.random() * window.innerWidth + 'px';
+        confetti.style.backgroundColor = ['#ff6b9d', '#ffc0cb', '#ffb6d9', '#ff69b4', '#ffd89b'][Math.floor(Math.random() * 5)];
+        confetti.style.animationDelay = Math.random() * 1 + 's';
+        confetti.style.animationDuration = (2 + Math.random() * 1) + 's';
+        container.appendChild(confetti);
+    }
+}
+
+// Auto-trigger confetti on certain interactions
+document.addEventListener('click', () => {
+    if (Math.random() > 0.7) {
+        createConfetti();
+    }
 });
