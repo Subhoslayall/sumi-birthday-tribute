@@ -1,141 +1,409 @@
-# 🎂 Sumi's Birthday Tribute Website 🎂
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>Happy Birthday Sumi! 🎀 | From Subho</title>
+    <link href="https://fonts.googleapis.com/css2?family=Special+Elite&family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=Kalam:wght@300;400;700&family=Caveat:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-A beautiful, vintage aesthetic birthday tribute website for Sumi! 💝✨
+        body {
+            min-height: 100vh;
+            background: #fdf3e3;
+            background-image: radial-gradient(circle at 20% 35%, rgba(210, 170, 100, 0.12) 2%, transparent 2.5%);
+            font-family: 'Special Elite', 'Courier New', monospace;
+            color: #3b2a1f;
+            padding: 1.2rem;
+        }
 
-## Features 🌟
+        .main-wrapper {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: rgba(254, 248, 235, 0.95);
+            border-radius: 32px 32px 60px 60px;
+            box-shadow: 0 25px 45px rgba(0, 0, 0, 0.1);
+            padding: 1.8rem;
+            border: 1px solid #ecdbba;
+        }
 
-✨ **Vintage Aesthetic Design** - Soft colors, cute doodles, and emojis everywhere
-📸 **Animated Photo Slideshow** - All 10 of Sumi's photos with personalized compliments
-💌 **Heartfelt Birthday Letter** - A touching message celebrating her friendship
-🎮 **Anime Trivia Quiz** - 5 fun anime questions with bonus birthday question
-🎰 **Memory Card Game** - Match pairs to celebrate her birthday
-🌈 **Interactive Wishes** - Special birthday wishes with cute animations
-🎉 **Confetti Animation** - Celebratory confetti falling across the page
-📱 **Fully Responsive** - Works beautifully on all devices
+        .hero {
+            text-align: center;
+            border-bottom: 2px dashed #e2caa0;
+            padding-bottom: 1.2rem;
+            margin-bottom: 1.8rem;
+        }
 
-## How to Use
+        .cursive-big {
+            font-family: 'Caveat', cursive;
+            font-size: 4rem;
+            font-weight: 700;
+            background: linear-gradient(135deg, #bc6f3a, #e7a062);
+            background-clip: text;
+            -webkit-background-clip: text;
+            color: transparent;
+        }
 
-### Setup
+        .typewriter-date {
+            font-family: 'Special Elite', monospace;
+            background: #f2e3cf;
+            display: inline-block;
+            padding: 0.3rem 1.5rem;
+            border-radius: 50px;
+            margin-top: 10px;
+            font-size: 0.9rem;
+        }
 
-1. **Add Photos**: Place your photos in the same directory as `index.html`
-   - Name them: `photo1.jpg`, `photo2.jpg`, ... `photo10.jpg`
-   - Photos should be at least 800x600px for best display
+        .doodle-row {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            flex-wrap: wrap;
+            margin: 15px 0 8px;
+            font-size: 1.8rem;
+        }
 
-2. **Customize Content** (Optional)
-   - Edit `index.html` to change compliments for each photo
-   - Modify trivia questions and answers
-   - Update the birthday letter with your own words
+        .friendship-banner {
+            background: #fef5e8;
+            border-radius: 30px;
+            padding: 1rem;
+            text-align: center;
+            margin-bottom: 2rem;
+            border-left: 8px solid #9bc48e;
+        }
 
-3. **Deploy**
-   - Push to GitHub
-   - Enable GitHub Pages in repository settings
-   - Access at: `https://yourusername.github.io/sumi-birthday-tribute`
+        .gallery-title {
+            text-align: center;
+            font-family: 'Caveat', cursive;
+            font-size: 2rem;
+            margin: 1.5rem 0 1rem;
+        }
 
-## File Structure
+        /* SIMPLE FRAMED PHOTO GRID - NO SLIDESHOW */
+        .photo-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 25px;
+            justify-items: center;
+            margin: 1.5rem 0;
+        }
 
-```
-sumi-birthday-tribute/
-├── index.html       # Main HTML file
-├── style.css        # Styling
-├── script.js        # JavaScript functionality
-├── photo1.jpg       # Birthday photos (photo1-photo10)
-├── photo2.jpg
-├── ...
-└── README.md        # This file
-```
+        .photo-frame {
+            background: #fffcf3;
+            padding: 12px 12px 18px 12px;
+            box-shadow: 8px 12px 20px rgba(0, 0, 0, 0.12);
+            width: 100%;
+            max-width: 220px;
+            border-radius: 18px 18px 24px 24px;
+            border: 1px solid #f2e2c0;
+            transition: all 0.3s;
+        }
 
-## Customization Guide
+        .photo-frame:hover {
+            transform: translateY(-5px);
+            box-shadow: 12px 18px 28px rgba(0, 0, 0, 0.15);
+        }
 
-### Change Compliments
-Edit the `.slide-caption` divs in `index.html`:
-```html
-<div class="slide-caption">Your custom compliment here! 💕</div>
-```
+        .photo-frame img {
+            width: 100%;
+            aspect-ratio: 1 / 1;
+            object-fit: cover;
+            border-radius: 14px;
+            filter: sepia(0.1);
+        }
 
-### Change Trivia Questions
-Find the quiz sections in `index.html` and modify:
-```html
-<h3>❓ Your Question Here?</h3>
-<button class="quiz-btn" onclick="checkAnswer('quiz-1', true)">Correct Answer</button>
-<button class="quiz-btn" onclick="checkAnswer('quiz-1', false)">Wrong Answer</button>
-```
+        .photo-caption {
+            text-align: center;
+            margin-top: 10px;
+            font-family: 'Kalam', cursive;
+            font-size: 0.9rem;
+            font-weight: bold;
+            color: #aa6a3c;
+        }
 
-### Change Colors
-Edit `style.css` to customize:
-- Primary color: `#ff69b4` (Hot Pink)
-- Secondary color: `#d4226f` (Deep Pink)
-- Background gradient in `body` selector
+        .compliment-text {
+            display: inline-block;
+            background: #f5e6d4;
+            border-radius: 40px;
+            padding: 4px 10px;
+            font-size: 0.7rem;
+            margin-top: 6px;
+            font-family: monospace;
+        }
 
-## Tech Stack
+        /* Cute Mini Games */
+        .games-section {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin: 2rem 0;
+            justify-content: center;
+        }
 
-- **HTML5** - Semantic structure
-- **CSS3** - Animations and responsive design
-- **Vanilla JavaScript** - No frameworks needed!
+        .game-card {
+            background: #fffbf0;
+            border-radius: 28px;
+            padding: 0.8rem 1.2rem;
+            flex: 1;
+            min-width: 160px;
+            text-align: center;
+            border: 1px solid #f3e2c5;
+            transition: 0.2s;
+        }
 
-## Browser Support
+        .game-card:hover {
+            transform: translateY(-3px);
+        }
 
-✅ Chrome, Firefox, Safari, Edge (all modern versions)
-✅ Mobile browsers (iOS Safari, Chrome Mobile)
+        .cute-btn {
+            background: #c9865c;
+            border: none;
+            color: white;
+            padding: 6px 16px;
+            border-radius: 30px;
+            cursor: pointer;
+            font-family: monospace;
+            margin-top: 8px;
+        }
 
-## Features Explained
+        .floating-emoji {
+            position: fixed;
+            pointer-events: none;
+            z-index: 10000;
+            font-size: 1.5rem;
+            animation: floatUp 2.5s ease-out forwards;
+        }
 
-### 📸 Slideshow
-- Auto-plays every 5 seconds
-- Click arrows to navigate manually
-- Click dots to jump to specific photos
-- Each photo has a personalized compliment
+        @keyframes floatUp {
+            0% {
+                transform: translateY(0) scale(0.4);
+                opacity: 0.9;
+            }
+            100% {
+                transform: translateY(-400px) scale(1.1);
+                opacity: 0;
+            }
+        }
 
-### 🎮 Anime Trivia
-- 5 questions total (4 anime + 1 bonus about Sumi!)
-- Instant feedback on answers
-- Can retake as many times as you want
+        footer {
+            text-align: center;
+            margin-top: 2rem;
+            font-size: 0.7rem;
+            border-top: 1px dashed #dec394;
+            padding-top: 1rem;
+        }
 
-### 🎰 Memory Game
-- Match 16 cards (8 pairs)
-- Tracks number of moves
-- Congratulations message when completed
-- Reset button to play again
+        @media (max-width: 650px) {
+            .cursive-big {
+                font-size: 2.5rem;
+            }
+            .photo-grid {
+                gap: 15px;
+            }
+        }
+    </style>
+</head>
+<body>
 
-## Hosting Options
+<div class="main-wrapper">
+    <div class="hero">
+        <div class="doodle-row">🎈🍒📸🧸🌸🍰🎀🐻‍❄️🍬✨</div>
+        <div class="cursive-big">🎉 Happy Birthday, Sumi! 🎉</div>
+        <div class="typewriter-date"><i class="fas fa-calendar-alt"></i> 14th June — Bestie's Special Day! <i class="fas fa-star"></i></div>
+        <div class="doodle-row">💛🙌🍭🐱🎁✨🍰🎀</div>
+    </div>
 
-1. **GitHub Pages** (Free, Recommended)
-   - Enable in repository Settings → Pages
-   - Choose main branch as source
-   - Site will be live at: `https://username.github.io/sumi-birthday-tribute`
+    <div class="friendship-banner">
+        <i class="fas fa-handshake fa-2x" style="color:#e8a87c;"></i>
+        <p style="font-size: 1.1rem; margin-top: 8px;">To my amazing friend Sumi — you're the best! Hope your day is filled with laughs, cake, and good vibes. 💛</p>
+        <p>— Subho ✨</p>
+    </div>
 
-2. **Netlify** (Free)
-   - Connect GitHub repo
-   - Auto-deploys on push
+    <!-- SIMPLE FRAMED PHOTO GRID - 10 PHOTOS -->
+    <div class="gallery-title">
+        <i class="fas fa-camera-retro"></i> 10 Beautiful Moments with Sumi 📸
+    </div>
+    <div class="photo-grid" id="photoGrid"></div>
+    <p style="text-align: center; font-size: 0.7rem;">✨ click any photo to see a special compliment! ✨</p>
 
-3. **Vercel** (Free)
-   - Connect GitHub repo
-   - Auto-deploys on push
+    <!-- Mini Games Section -->
+    <div class="games-section">
+        <div class="game-card">
+            <i class="fas fa-cookie-bite fa-2x"></i>
+            <div id="fortuneMsg" style="font-size:0.8rem; margin:8px 0;">🌸 click for a sweet message</div>
+            <button class="cute-btn" id="fortuneBtn"><i class="fas fa-hand-peace"></i> Fortune Cookie</button>
+        </div>
+        <div class="game-card">
+            <i class="fas fa-gift fa-2x"></i>
+            <div id="giftMsg" style="font-size:0.8rem; margin:8px 0;">🎁 open a surprise gift</div>
+            <button class="cute-btn" id="giftBtn"><i class="fas fa-gift"></i> Open Gift</button>
+        </div>
+        <div class="game-card">
+            <i class="fas fa-cat fa-2x"></i>
+            <div id="catMsg" style="font-size:0.8rem; margin:8px 0;">🐱 pet the cute kitty</div>
+            <button class="cute-btn" id="petCatBtn"><i class="fas fa-paw"></i> Pet Cat</button>
+        </div>
+        <div class="game-card">
+            <i class="fas fa-smile fa-2x"></i>
+            <div id="complimentMsg" style="font-size:0.8rem; margin:8px 0;">💬 need a nice word?</div>
+            <button class="cute-btn" id="randomComplimentBtn"><i class="fas fa-star"></i> Compliment</button>
+        </div>
+    </div>
 
-## Troubleshooting
+    <footer>
+        <i class="fas fa-feather-alt"></i> made with bestie energy — for Sumi's 14th June 🎉
+    </footer>
+</div>
 
-### Photos not showing?
-- Ensure photos are named `photo1.jpg` through `photo10.jpg`
-- Check file extensions match (`.jpg`, `.png`, etc.)
-- Files must be in same directory as `index.html`
-
-### Styles look weird?
-- Clear browser cache (Ctrl+F5 or Cmd+Shift+R)
-- Check that `style.css` is in the same directory
-
-### Games not working?
-- Check browser console for errors (F12)
-- Ensure `script.js` is in the same directory
-- Try a different browser
-
-## Birthday Tribute Details
-
-- **Birthday**: June 14 🎂
-- **Theme**: Vintage Aesthetic with Anime References
-- **Tone**: Friendly, celebrating a wonderful friendship
-- **Vibe**: Cute, fun, and heartfelt
-
-## Made with ❤️
-
-This website was created with tons of love for the cutest friend ever - Sumi! 💝✨
-
-Enjoy the celebration! 🎉🎊
+<script>
+    // ============================================================
+    // 10 PHOTOS - JUST SIMPLE FRAMES (NO SLIDESHOW)
+    // ============================================================
+    // HOW TO ADD YOUR PHOTOS:
+    // 1. Create a folder called "images" next to this file
+    // 2. Put your 10 photos of Sumi in that folder
+    // 3. Name them: photo1.jpg, photo2.jpg ... photo10.jpg
+    // ============================================================
+    
+    const photoPaths = [
+        "images/photo1.jpg",
+        "images/photo2.jpg",
+        "images/photo3.jpg",
+        "images/photo4.jpg",
+        "images/photo5.jpg",
+        "images/photo6.jpg",
+        "images/photo7.jpg",
+        "images/photo8.jpg",
+        "images/photo9.jpg",
+        "images/photo10.jpg"
+    ];
+    
+    // Unique compliments for each photo (friendly, no romance)
+    const compliments = [
+        "🌸 You have the kindest heart! Always makes everyone feel welcome.",
+        "🍰 You're literally the funniest person I know — your memes are iconic!",
+        "🎀 Your energy is so positive and uplifting. Thanks for being you!",
+        "🧸 You're an amazing friend — so loyal, honest, and real. No cap!",
+        "✨ Your smile lights up any room. Keep shining bestie!",
+        "🍒 You're so creative and talented! Everything you do is awesome.",
+        "📸 You have the best vibes — hanging out with you is always a blast!",
+        "🐻‍❄️ You're so strong and brave. I admire you a lot!",
+        "💛 You make the world a better place just by being in it. Periodt.",
+        "🎉 You're the coolest person to have late night chats with. Bestie forever!"
+    ];
+    
+    const captions = ["🌸 sunny days", "🍰 cake time", "🎀 cute moment", "🧸 cozy vibes", "✨ sparkle energy", "🍒 fun times", "📸 memory lane", "🐻‍❄️ adventure", "💛 happy heart", "🎉 celebration"];
+    
+    const photoGrid = document.getElementById('photoGrid');
+    
+    for (let i = 0; i < 10; i++) {
+        const frame = document.createElement('div');
+        frame.className = 'photo-frame';
+        
+        const img = document.createElement('img');
+        img.src = photoPaths[i];
+        img.alt = `Sumi ${i+1}`;
+        // Fallback if image doesn't exist
+        img.onerror = function() {
+            this.src = `data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 200'%3E%3Crect width='200' height='200' fill='%23faeedb'/%3E%3Ctext x='100' y='110' text-anchor='middle' fill='%23b87a4a' font-size='14'%3E📸 Add Photo ${i+1}%3C/text%3E%3C/svg%3E`;
+        };
+        
+        const captionDiv = document.createElement('div');
+        captionDiv.className = 'photo-caption';
+        captionDiv.innerHTML = `<i class="fas fa-heart" style="color:#e8a87c;"></i> ${captions[i]} <i class="fas fa-heart" style="color:#e8a87c;"></i>
+                                <div class="compliment-text" id="compText${i}">✨ tap for compliment ✨</div>`;
+        
+        frame.appendChild(img);
+        frame.appendChild(captionDiv);
+        
+        const complimentSpan = captionDiv.querySelector(`#compText${i}`);
+        frame.addEventListener('click', () => {
+            complimentSpan.innerHTML = `💬 "${compliments[i]}" 💬`;
+            complimentSpan.style.background = "#e8d5b8";
+            createFloatingEmoji('💛');
+            setTimeout(() => {
+                complimentSpan.innerHTML = `✨ tap for compliment ✨`;
+                complimentSpan.style.background = "#f5e6d4";
+            }, 3500);
+        });
+        
+        photoGrid.appendChild(frame);
+    }
+    
+    console.log("📸 To add Sumi's photos: Create an 'images' folder and put photo1.jpg to photo10.jpg inside it!");
+    
+    // ========== MINI GAMES ==========
+    
+    // Fortune Cookie
+    const fortunes = [
+        "🌸 Wishing you the happiest birthday ever, bestie!",
+        "🍰 This year will bring you so much joy and success!",
+        "🎀 You're the coolest friend anyone could ask for ✨",
+        "🧸 May your day be filled with cake, laughs, and good vibes!",
+        "💛 You deserve all the amazing things coming your way!",
+        "🍒 No cap, you're literally the best. Keep shining!"
+    ];
+    document.getElementById('fortuneBtn').addEventListener('click', () => {
+        const random = fortunes[Math.floor(Math.random() * fortunes.length)];
+        document.getElementById('fortuneMsg').innerHTML = `🍪 "${random}" 🍪`;
+        createFloatingEmoji('🍀');
+    });
+    
+    // Gift Box
+    const gifts = ["🎁 Virtual cupcake! 🧁", "📸 A cute photo frame sticker!", "🌸 A virtual bouquet of flowers!", "🍰 Digital birthday cake slice!", "✨ Sparkle jar full of good vibes!"];
+    let giftIdx = 0;
+    document.getElementById('giftBtn').addEventListener('click', () => {
+        document.getElementById('giftMsg').innerHTML = `🎁 ${gifts[giftIdx % gifts.length]} 🎁`;
+        createFloatingEmoji('🎁');
+        giftIdx++;
+    });
+    
+    // Pet Cat
+    let petCount = 0;
+    document.getElementById('petCatBtn').addEventListener('click', () => {
+        petCount++;
+        document.getElementById('catMsg').innerHTML = `🐱 You petted the kitty ${petCount} time${petCount !== 1 ? 's' : ''}! It purrs happily! 🐾`;
+        createFloatingEmoji('🐱');
+    });
+    
+    // Random Compliment
+    const extraCompliments = [
+        "🌸 You're such a kind soul!", "🍰 Your smile makes everyone's day!", "🎀 You're literally the coolest bestie!",
+        "✨ You have amazing vibes!", "🧸 You're so fun to be around!", "🍒 You're iconic, no cap!"
+    ];
+    document.getElementById('randomComplimentBtn').addEventListener('click', () => {
+        const random = extraCompliments[Math.floor(Math.random() * extraCompliments.length)];
+        document.getElementById('complimentMsg').innerHTML = `💬 "${random}" 💬`;
+        createFloatingEmoji('💛');
+    });
+    
+    // Floating Emojis
+    function createFloatingEmoji(emojiType = null) {
+        const emojis = ['🌸', '🍒', '🧸', '🎀', '✨', '🍰', '💛', '🎉'];
+        const chosen = emojiType || emojis[Math.floor(Math.random() * emojis.length)];
+        const div = document.createElement('div');
+        div.className = 'floating-emoji';
+        div.innerHTML = chosen;
+        div.style.left = Math.random() * 90 + 5 + '%';
+        div.style.bottom = '-20px';
+        document.body.appendChild(div);
+        setTimeout(() => div.remove(), 2500);
+    }
+    
+    setInterval(() => {
+        if (Math.random() > 0.7) createFloatingEmoji();
+    }, 3000);
+    
+    window.addEventListener('load', () => {
+        for (let i = 0; i < 5; i++) {
+            setTimeout(() => createFloatingEmoji('🎉'), i * 200);
+        }
+    });
+</script>
+</body>
+</html>
