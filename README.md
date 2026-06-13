@@ -84,7 +84,7 @@
             margin: 1.5rem 0 1rem;
         }
 
-        /* SIMPLE FRAMED PHOTO GRID - NO SLIDESHOW */
+        /* SIMPLE FRAMED PHOTO GRID - NO SLIDESHOW, NO CAROUSEL */
         .photo-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
@@ -134,60 +134,7 @@
             font-size: 0.7rem;
             margin-top: 6px;
             font-family: monospace;
-        }
-
-        /* Cute Mini Games */
-        .games-section {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 1rem;
-            margin: 2rem 0;
-            justify-content: center;
-        }
-
-        .game-card {
-            background: #fffbf0;
-            border-radius: 28px;
-            padding: 0.8rem 1.2rem;
-            flex: 1;
-            min-width: 160px;
-            text-align: center;
-            border: 1px solid #f3e2c5;
-            transition: 0.2s;
-        }
-
-        .game-card:hover {
-            transform: translateY(-3px);
-        }
-
-        .cute-btn {
-            background: #c9865c;
-            border: none;
-            color: white;
-            padding: 6px 16px;
-            border-radius: 30px;
             cursor: pointer;
-            font-family: monospace;
-            margin-top: 8px;
-        }
-
-        .floating-emoji {
-            position: fixed;
-            pointer-events: none;
-            z-index: 10000;
-            font-size: 1.5rem;
-            animation: floatUp 2.5s ease-out forwards;
-        }
-
-        @keyframes floatUp {
-            0% {
-                transform: translateY(0) scale(0.4);
-                opacity: 0.9;
-            }
-            100% {
-                transform: translateY(-400px) scale(1.1);
-                opacity: 0;
-            }
         }
 
         footer {
@@ -224,36 +171,12 @@
         <p>— Subho ✨</p>
     </div>
 
-    <!-- SIMPLE FRAMED PHOTO GRID - 10 PHOTOS -->
+    <!-- SIMPLE FRAMED PHOTO GRID - JUST PHOTOS IN FRAMES, NO SLIDESHOW -->
     <div class="gallery-title">
         <i class="fas fa-camera-retro"></i> 10 Beautiful Moments with Sumi 📸
     </div>
     <div class="photo-grid" id="photoGrid"></div>
-    <p style="text-align: center; font-size: 0.7rem;">✨ click any photo to see a special compliment! ✨</p>
-
-    <!-- Mini Games Section -->
-    <div class="games-section">
-        <div class="game-card">
-            <i class="fas fa-cookie-bite fa-2x"></i>
-            <div id="fortuneMsg" style="font-size:0.8rem; margin:8px 0;">🌸 click for a sweet message</div>
-            <button class="cute-btn" id="fortuneBtn"><i class="fas fa-hand-peace"></i> Fortune Cookie</button>
-        </div>
-        <div class="game-card">
-            <i class="fas fa-gift fa-2x"></i>
-            <div id="giftMsg" style="font-size:0.8rem; margin:8px 0;">🎁 open a surprise gift</div>
-            <button class="cute-btn" id="giftBtn"><i class="fas fa-gift"></i> Open Gift</button>
-        </div>
-        <div class="game-card">
-            <i class="fas fa-cat fa-2x"></i>
-            <div id="catMsg" style="font-size:0.8rem; margin:8px 0;">🐱 pet the cute kitty</div>
-            <button class="cute-btn" id="petCatBtn"><i class="fas fa-paw"></i> Pet Cat</button>
-        </div>
-        <div class="game-card">
-            <i class="fas fa-smile fa-2x"></i>
-            <div id="complimentMsg" style="font-size:0.8rem; margin:8px 0;">💬 need a nice word?</div>
-            <button class="cute-btn" id="randomComplimentBtn"><i class="fas fa-star"></i> Compliment</button>
-        </div>
-    </div>
+    <p style="text-align: center; font-size: 0.7rem;">✨ click any photo's compliment to see a sweet message! ✨</p>
 
     <footer>
         <i class="fas fa-feather-alt"></i> made with bestie energy — for Sumi's 14th June 🎉
@@ -262,12 +185,14 @@
 
 <script>
     // ============================================================
-    // 10 PHOTOS - JUST SIMPLE FRAMES (NO SLIDESHOW)
+    // 10 PHOTOS - JUST SIMPLE FRAMES (NO SLIDESHOW, NO CAROUSEL)
     // ============================================================
     // HOW TO ADD YOUR PHOTOS:
     // 1. Create a folder called "images" next to this file
     // 2. Put your 10 photos of Sumi in that folder
     // 3. Name them: photo1.jpg, photo2.jpg ... photo10.jpg
+    //    (use .png if your photos are PNG)
+    // 4. Open this file - DONE!
     // ============================================================
     
     const photoPaths = [
@@ -308,102 +233,55 @@
         const img = document.createElement('img');
         img.src = photoPaths[i];
         img.alt = `Sumi ${i+1}`;
-        // Fallback if image doesn't exist
+        // Fallback if image doesn't exist - shows a placeholder so you know which photo to add
         img.onerror = function() {
-            this.src = `data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 200'%3E%3Crect width='200' height='200' fill='%23faeedb'/%3E%3Ctext x='100' y='110' text-anchor='middle' fill='%23b87a4a' font-size='14'%3E📸 Add Photo ${i+1}%3C/text%3E%3C/svg%3E`;
+            this.src = `data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 200'%3E%3Crect width='200' height='200' fill='%23faeedb'/%3E%3Ctext x='100' y='110' text-anchor='middle' fill='%23b87a4a' font-size='14'%3E📸 Photo ${i+1}%3C/text%3E%3C/svg%3E`;
         };
         
         const captionDiv = document.createElement('div');
         captionDiv.className = 'photo-caption';
         captionDiv.innerHTML = `<i class="fas fa-heart" style="color:#e8a87c;"></i> ${captions[i]} <i class="fas fa-heart" style="color:#e8a87c;"></i>
-                                <div class="compliment-text" id="compText${i}">✨ tap for compliment ✨</div>`;
+                                <div class="compliment-text" data-compliment="${compliments[i]}">✨ tap for compliment ✨</div>`;
         
         frame.appendChild(img);
         frame.appendChild(captionDiv);
         
-        const complimentSpan = captionDiv.querySelector(`#compText${i}`);
-        frame.addEventListener('click', () => {
-            complimentSpan.innerHTML = `💬 "${compliments[i]}" 💬`;
+        // Add click event to the compliment text only
+        const complimentSpan = captionDiv.querySelector('.compliment-text');
+        complimentSpan.addEventListener('click', (e) => {
+            e.stopPropagation();
+            const compliment = complimentSpan.getAttribute('data-compliment');
+            complimentSpan.innerHTML = `💬 "${compliment}" 💬`;
             complimentSpan.style.background = "#e8d5b8";
-            createFloatingEmoji('💛');
+            
+            // Create floating heart
+            const heart = document.createElement('div');
+            heart.innerHTML = '💛';
+            heart.style.position = 'fixed';
+            heart.style.left = e.clientX + 'px';
+            heart.style.top = e.clientY + 'px';
+            heart.style.fontSize = '1.5rem';
+            heart.style.pointerEvents = 'none';
+            heart.style.opacity = '0.8';
+            heart.style.transition = 'all 0.8s ease';
+            document.body.appendChild(heart);
+            setTimeout(() => {
+                heart.style.transform = 'translateY(-100px)';
+                heart.style.opacity = '0';
+                setTimeout(() => heart.remove(), 800);
+            }, 10);
+            
             setTimeout(() => {
                 complimentSpan.innerHTML = `✨ tap for compliment ✨`;
                 complimentSpan.style.background = "#f5e6d4";
-            }, 3500);
+            }, 4000);
         });
         
         photoGrid.appendChild(frame);
     }
     
     console.log("📸 To add Sumi's photos: Create an 'images' folder and put photo1.jpg to photo10.jpg inside it!");
-    
-    // ========== MINI GAMES ==========
-    
-    // Fortune Cookie
-    const fortunes = [
-        "🌸 Wishing you the happiest birthday ever, bestie!",
-        "🍰 This year will bring you so much joy and success!",
-        "🎀 You're the coolest friend anyone could ask for ✨",
-        "🧸 May your day be filled with cake, laughs, and good vibes!",
-        "💛 You deserve all the amazing things coming your way!",
-        "🍒 No cap, you're literally the best. Keep shining!"
-    ];
-    document.getElementById('fortuneBtn').addEventListener('click', () => {
-        const random = fortunes[Math.floor(Math.random() * fortunes.length)];
-        document.getElementById('fortuneMsg').innerHTML = `🍪 "${random}" 🍪`;
-        createFloatingEmoji('🍀');
-    });
-    
-    // Gift Box
-    const gifts = ["🎁 Virtual cupcake! 🧁", "📸 A cute photo frame sticker!", "🌸 A virtual bouquet of flowers!", "🍰 Digital birthday cake slice!", "✨ Sparkle jar full of good vibes!"];
-    let giftIdx = 0;
-    document.getElementById('giftBtn').addEventListener('click', () => {
-        document.getElementById('giftMsg').innerHTML = `🎁 ${gifts[giftIdx % gifts.length]} 🎁`;
-        createFloatingEmoji('🎁');
-        giftIdx++;
-    });
-    
-    // Pet Cat
-    let petCount = 0;
-    document.getElementById('petCatBtn').addEventListener('click', () => {
-        petCount++;
-        document.getElementById('catMsg').innerHTML = `🐱 You petted the kitty ${petCount} time${petCount !== 1 ? 's' : ''}! It purrs happily! 🐾`;
-        createFloatingEmoji('🐱');
-    });
-    
-    // Random Compliment
-    const extraCompliments = [
-        "🌸 You're such a kind soul!", "🍰 Your smile makes everyone's day!", "🎀 You're literally the coolest bestie!",
-        "✨ You have amazing vibes!", "🧸 You're so fun to be around!", "🍒 You're iconic, no cap!"
-    ];
-    document.getElementById('randomComplimentBtn').addEventListener('click', () => {
-        const random = extraCompliments[Math.floor(Math.random() * extraCompliments.length)];
-        document.getElementById('complimentMsg').innerHTML = `💬 "${random}" 💬`;
-        createFloatingEmoji('💛');
-    });
-    
-    // Floating Emojis
-    function createFloatingEmoji(emojiType = null) {
-        const emojis = ['🌸', '🍒', '🧸', '🎀', '✨', '🍰', '💛', '🎉'];
-        const chosen = emojiType || emojis[Math.floor(Math.random() * emojis.length)];
-        const div = document.createElement('div');
-        div.className = 'floating-emoji';
-        div.innerHTML = chosen;
-        div.style.left = Math.random() * 90 + 5 + '%';
-        div.style.bottom = '-20px';
-        document.body.appendChild(div);
-        setTimeout(() => div.remove(), 2500);
-    }
-    
-    setInterval(() => {
-        if (Math.random() > 0.7) createFloatingEmoji();
-    }, 3000);
-    
-    window.addEventListener('load', () => {
-        for (let i = 0; i < 5; i++) {
-            setTimeout(() => createFloatingEmoji('🎉'), i * 200);
-        }
-    });
+    console.log("🎀 Each photo has a unique compliment when you click the text below it!");
 </script>
 </body>
 </html>
