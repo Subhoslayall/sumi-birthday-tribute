@@ -84,55 +84,58 @@
             margin: 1.5rem 0 1rem;
         }
 
-        /* SIMPLE FRAMED PHOTO GRID - NO SLIDESHOW, NO CAROUSEL */
+        /* ======================================== */
+        /* SIMPLE FRAMED PHOTO GRID - NORMAL FRAMES */
+        /* ======================================== */
         .photo-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-            gap: 25px;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 20px;
             justify-items: center;
+            align-items: center;
             margin: 1.5rem 0;
         }
 
         .photo-frame {
-            background: #fffcf3;
-            padding: 12px 12px 18px 12px;
-            box-shadow: 8px 12px 20px rgba(0, 0, 0, 0.12);
+            background: white;
+            padding: 8px 8px 12px 8px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
             width: 100%;
-            max-width: 220px;
-            border-radius: 18px 18px 24px 24px;
-            border: 1px solid #f2e2c0;
-            transition: all 0.3s;
+            max-width: 180px;
+            border-radius: 12px;
+            border: 1px solid #eee0cc;
+            transition: all 0.2s ease;
         }
 
         .photo-frame:hover {
-            transform: translateY(-5px);
-            box-shadow: 12px 18px 28px rgba(0, 0, 0, 0.15);
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
         }
 
         .photo-frame img {
             width: 100%;
             aspect-ratio: 1 / 1;
             object-fit: cover;
-            border-radius: 14px;
-            filter: sepia(0.1);
+            border-radius: 8px;
+            display: block;
         }
 
         .photo-caption {
             text-align: center;
-            margin-top: 10px;
+            margin-top: 8px;
             font-family: 'Kalam', cursive;
-            font-size: 0.9rem;
-            font-weight: bold;
-            color: #aa6a3c;
+            font-size: 0.8rem;
+            font-weight: 500;
+            color: #b57248;
         }
 
         .compliment-text {
             display: inline-block;
             background: #f5e6d4;
-            border-radius: 40px;
-            padding: 4px 10px;
-            font-size: 0.7rem;
-            margin-top: 6px;
+            border-radius: 30px;
+            padding: 3px 8px;
+            font-size: 0.65rem;
+            margin-top: 5px;
             font-family: monospace;
             cursor: pointer;
         }
@@ -145,12 +148,20 @@
             padding-top: 1rem;
         }
 
-        @media (max-width: 650px) {
+        @media (max-width: 900px) {
+            .photo-grid {
+                grid-template-columns: repeat(3, 1fr);
+                gap: 15px;
+            }
+        }
+
+        @media (max-width: 550px) {
+            .photo-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 12px;
+            }
             .cursive-big {
                 font-size: 2.5rem;
-            }
-            .photo-grid {
-                gap: 15px;
             }
         }
     </style>
@@ -171,12 +182,12 @@
         <p>— Subho ✨</p>
     </div>
 
-    <!-- SIMPLE FRAMED PHOTO GRID - JUST PHOTOS IN FRAMES, NO SLIDESHOW -->
+    <!-- SIMPLE FRAMED PHOTO GRID - NORMAL PHOTOS, NO SLIDESHOW -->
     <div class="gallery-title">
         <i class="fas fa-camera-retro"></i> 10 Beautiful Moments with Sumi 📸
     </div>
     <div class="photo-grid" id="photoGrid"></div>
-    <p style="text-align: center; font-size: 0.7rem;">✨ click any photo's compliment to see a sweet message! ✨</p>
+    <p style="text-align: center; font-size: 0.7rem;">✨ click the text below any photo to see a sweet message! ✨</p>
 
     <footer>
         <i class="fas fa-feather-alt"></i> made with bestie energy — for Sumi's 14th June 🎉
@@ -185,7 +196,7 @@
 
 <script>
     // ============================================================
-    // 10 PHOTOS - JUST SIMPLE FRAMES (NO SLIDESHOW, NO CAROUSEL)
+    // 10 PHOTOS - SIMPLE FRAMES IN A GRID
     // ============================================================
     // HOW TO ADD YOUR PHOTOS:
     // 1. Create a folder called "images" next to this file
@@ -225,6 +236,7 @@
     const captions = ["🌸 sunny days", "🍰 cake time", "🎀 cute moment", "🧸 cozy vibes", "✨ sparkle energy", "🍒 fun times", "📸 memory lane", "🐻‍❄️ adventure", "💛 happy heart", "🎉 celebration"];
     
     const photoGrid = document.getElementById('photoGrid');
+    photoGrid.innerHTML = '';
     
     for (let i = 0; i < 10; i++) {
         const frame = document.createElement('div');
@@ -233,7 +245,7 @@
         const img = document.createElement('img');
         img.src = photoPaths[i];
         img.alt = `Sumi ${i+1}`;
-        // Fallback if image doesn't exist - shows a placeholder so you know which photo to add
+        // Fallback if image doesn't exist
         img.onerror = function() {
             this.src = `data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 200'%3E%3Crect width='200' height='200' fill='%23faeedb'/%3E%3Ctext x='100' y='110' text-anchor='middle' fill='%23b87a4a' font-size='14'%3E📸 Photo ${i+1}%3C/text%3E%3C/svg%3E`;
         };
@@ -246,30 +258,13 @@
         frame.appendChild(img);
         frame.appendChild(captionDiv);
         
-        // Add click event to the compliment text only
+        // Click event on compliment text
         const complimentSpan = captionDiv.querySelector('.compliment-text');
         complimentSpan.addEventListener('click', (e) => {
             e.stopPropagation();
             const compliment = complimentSpan.getAttribute('data-compliment');
             complimentSpan.innerHTML = `💬 "${compliment}" 💬`;
             complimentSpan.style.background = "#e8d5b8";
-            
-            // Create floating heart
-            const heart = document.createElement('div');
-            heart.innerHTML = '💛';
-            heart.style.position = 'fixed';
-            heart.style.left = e.clientX + 'px';
-            heart.style.top = e.clientY + 'px';
-            heart.style.fontSize = '1.5rem';
-            heart.style.pointerEvents = 'none';
-            heart.style.opacity = '0.8';
-            heart.style.transition = 'all 0.8s ease';
-            document.body.appendChild(heart);
-            setTimeout(() => {
-                heart.style.transform = 'translateY(-100px)';
-                heart.style.opacity = '0';
-                setTimeout(() => heart.remove(), 800);
-            }, 10);
             
             setTimeout(() => {
                 complimentSpan.innerHTML = `✨ tap for compliment ✨`;
@@ -281,7 +276,6 @@
     }
     
     console.log("📸 To add Sumi's photos: Create an 'images' folder and put photo1.jpg to photo10.jpg inside it!");
-    console.log("🎀 Each photo has a unique compliment when you click the text below it!");
 </script>
 </body>
 </html>
